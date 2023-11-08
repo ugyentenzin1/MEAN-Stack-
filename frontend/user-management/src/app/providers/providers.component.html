@@ -4,7 +4,7 @@
     <h2 class="text-center mt-0">At Your Service</h2>
     <hr class="divider my-4">
     <div class="table-responsive">
-      <a class="btn btn-primary my-2" href="/providers/add-provider/">Add New Provider</a>
+      <a class="btn btn-primary my-2" routerLink="/providers/add-provider/">Add New Provider</a>
       <table class="table table-hover table-bordered">
         <thead class="thead-light">
         <tr>
@@ -27,9 +27,9 @@
           <td>{{provider.company.company_name}}</td>
           <td>
 
-            <a href="/providers/details/{{provider.id}}" class="btn btn-info btn-sm">More info...</a>
-            <a href="/providers/edit/{{provider.id}}" class="btn btn-secondary btn-sm mx-1">Edit</a>
-            <a href="#my{{provider.id}}" class="btn btn-danger btn-sm" data-toggle="modal">Delete</a>
+            <a routerLink="/providers/details/{{provider.id}}" class="btn btn-info btn-sm">More info...</a>
+            <a routerLink="/providers/edit/{{provider.id}}" class="btn btn-secondary btn-sm mx-1">Edit</a>
+            <a routerLink="#my{{provider.id}}" class="btn btn-danger btn-sm" data-toggle="modal">Delete</a>
 
             <!-- Modal Window - Confirmation -->
             <div id="my{{provider.id}}" class="modal fade">
