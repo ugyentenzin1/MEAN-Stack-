@@ -8,6 +8,8 @@ import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
 import {NotFoundComponent} from "./not-found/not-found.component";
 import {AddProvidersComponent} from "./providers/add-providers/add-providers.component";
+import {EditProvidersComponent} from "./providers/edit-providers/edit-providers.component";
+import {DeleteProvidersComponent} from "./providers/delete-providers/delete-providers.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -19,6 +21,8 @@ const routes: Routes = [
     // }]
   },
   {path: 'providers/add', component: AddProvidersComponent},
+  {path: 'providers/edit/:id', component: EditProvidersComponent},
+  {path: 'providers/delete/:id', component: DeleteProvidersComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: '**', component: NotFoundComponent},

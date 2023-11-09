@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Providers} from "../../models /providers";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {PROVIDERS} from "../../models /data-providers";
+import {ProvidersService} from "../../services /providers.service";
 
 @Component({
   selector: 'app-add-providers',
@@ -14,25 +15,32 @@ export class AddProvidersComponent implements OnInit {
   provider:Providers = new Providers();
   providersForm!: FormGroup;
   providers = PROVIDERS;
-  constructor() { }
+
+
+  dataProviders!: Providers;
+  constructor(private providerServices: ProvidersService) { }
 
   ngOnInit(): void {
     this.providersForm = new FormGroup({
-      firstname: new FormControl(),
-      lastname: new FormControl(),
-      position: new FormControl(),
-      company_name: new FormControl(),
+      firstname: new FormControl('',[Validators.required, Validators.minLength(2)]),
+      lastname: new FormControl('', [Validators.required, Validators.max(20)]),
+      position: new FormControl('', [Validators.required, Validators.pattern('')]),
+      company_name: new FormControl('', [Validators.required]),
       address: new FormControl(),
       address2: new FormControl(),
       city: new FormControl(),
       state: new FormControl(),
       postal_code: new FormControl(),
-      phone: new FormControl(),
-      email: new FormControl(),
+      phone: new FormControl('', [Validators.required, Validators.pattern('^[2-9]{3}-[0-9]{4}-[0-9]{5}$')]),
+      email: new FormControl('',[ Validators.required]),
       description: new FormControl(),
       tagline: new FormControl(),
     })
 
+  }
+
+  get f() {
+    return this.providersForm.controls;
   }
 
   handleSubmit() : void {

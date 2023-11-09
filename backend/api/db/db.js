@@ -6,7 +6,7 @@ const uri = 'mongodb://127.0.0.1:27017/mongodb_provider';
 
 //make connection
 mongoose.connect(uri, {useNewUrlParser: true ,useUnifiedTopology: true})
-    .then(result => {
+    .then( result => {
         console.log('Sucessfully Connected')
     })
     .catch(

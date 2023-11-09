@@ -16,10 +16,12 @@
             <div class="form-group row">
               <div class="col-sm-6 mb-3 mb-sm-0">
                 <label for="inputFirstName">First Name</label>
+                <span class="text-danger ml-2" *ngIf="providersForm.get('firstname')?.touched && providersForm.get('firstname')?.errors?.['required']">*Required</span>
                 <input type="text" class="form-control form-control-user" formControlName="firstname" id="inputFirstName" required>
               </div>
               <div class="col-sm-6">
                 <label for="inputLastName">Last Name</label>
+                <span class="text-danger ml-2" *ngIf="providersForm.get('lastname')?.touched && providersForm.get('lastname')?.errors?.['required']">*Required</span>
                 <input type="text" class="form-control form-control-user" formControlName="lastname" id="inputLastName" required>
               </div>
             </div>
@@ -34,7 +36,11 @@
               </div>
               <div class="col-sm-6 mb-3 mb-sm-0">
                 <label for="inputPhone">Phone</label>
+                <span *ngIf="providersForm.get('phone')?.touched && providersForm.get('phone')?.errors?.['required']" class="text-danger"> *Required</span>
                 <input type="phone" class="form-control form-control-user" formControlName="phone" id="inputPhone" required>
+                <div class="text-danger" *ngIf="providersForm.get('phone')?.touched && providersForm.get('phone')?.errors?.['pattern']">
+                  Ex. 29-2343-24332
+                </div>
               </div>
             </div>
             <hr class="divider my-4">
@@ -69,14 +75,14 @@
               <div class="col-sm-6 mb-3 mb-sm-0">
                 <label for="inputDescription">Description</label>
                 <textarea class="form-control form-control-user" formControlName="description" id="inputDescription"
-                          required></textarea>
+                          ></textarea>
               </div>
               <div class="col-sm-6">
                 <label for="inputTagLine">Tag Line</label>
                 <textarea class="form-control form-control-user" formControlName="tagline" id="inputTagLine" required></textarea>
               </div>
             </div>
-            <button class="btn btn-primary btn-lg btn-block" type="submit">
+            <button [disabled]="providersForm.invalid" class="btn btn-primary btn-lg btn-block" type="submit">
               Add Provider</button>
           </form>
         </div>

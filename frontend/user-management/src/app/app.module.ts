@@ -14,6 +14,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 import {ProvidersModule} from "./providers/providers.module";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {ProvidersModule} from "./providers/providers.module";
         BrowserModule,
         AppRoutingModule,
         FormsModule,
-      ProvidersModule
+      ProvidersModule,
+      HttpClientModule
     ],
   providers: [],
   bootstrap: [AppComponent]
