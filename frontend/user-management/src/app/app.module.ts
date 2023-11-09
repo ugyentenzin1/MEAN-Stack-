@@ -9,11 +9,11 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
-import { ProvidersComponent } from './providers/providers.component';
 import { UserComponent } from './user/user.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
+import {ProvidersModule} from "./providers/providers.module";
 
 @NgModule({
   declarations: [
@@ -23,16 +23,16 @@ import { FooterComponent } from './footer/footer.component';
     RegisterComponent,
     ContactComponent,
     HomeComponent,
-    ProvidersComponent,
     UserComponent,
     NotFoundComponent,
     NavComponent,
-    FooterComponent
+    FooterComponent,
   ],
     imports: [
         BrowserModule,
         AppRoutingModule,
-        FormsModule
+        FormsModule,
+      ProvidersModule
     ],
   providers: [],
   bootstrap: [AppComponent]

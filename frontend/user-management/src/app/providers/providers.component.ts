@@ -1,18 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { PROVIDERS} from "../../assets/models/provider.data";
+import {PROVIDERS} from "../models /data-providers";
 
 @Component({
   selector: 'app-providers',
   templateUrl: './providers.component.html',
   styleUrls: ['./providers.component.scss']
 })
-export class ProvidersComponent implements OnInit {
+export class ProvidersComponent {
 
-  providers: any = PROVIDERS;
+  providers= PROVIDERS;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() {
   }
-
 }
