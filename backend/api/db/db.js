@@ -5,34 +5,39 @@ const {Provider} = require('../models/provider')
 const uri = 'mongodb://127.0.0.1:27017/mongodb_provider';
 
 //make connection
-mongoose.connect(uri, {useNewUrlParser: true ,useUnifiedTopology: true})
-    .then( result => {
-        console.log('Sucessfully Connected')
-    })
-    .catch(
-        error => {
-            console.log('Not successful', error)
-        }
-    )
+// mongoose.connect(uri)
+//     .then( result => {
+//         console.log('Sucessfully Connected')
+//     })
+//     .catch(
+//         error => {
+//             console.log('Not successful', error)
+//         }
+//     )
+// const uri = 'mongodb://127.0.0.1:27017/mongodb_provider';
 
-//used to create once
-// Provider.create({
-//     "firstname": "Marylinda",
-//     "lastname": "Bevir",
-//     "position": "Chief Executive Office",
-//     "company": {
-//         "company_name": "Jabbersphere",
-//         "address": "1081 Arapahoe Court",
-//         "address2": "",
-//         "city": "Houston",
-//         "state": "TX",
-//         "postal_code": "77234",
-//         "phone": "713-849-1712",
-//         "email": "mbevir@jabbersphere.com",
-//         "description": "Versatile Asynchronous Collaboration",
-//         "tagline": "Visualize Cross-Platform Action-Items"
-//     }
-// }).then()
+mongoose.connect(uri)
+    .then(() => {
+        console.log('Successfully Connected');
+    })
+    .catch((error) => {
+        console.error('Not successful', error);
+    });
+
+mongoose.connection.on('disconnected', () => {
+    console.log('MongoDB disconnected');
+});
+
+mongoose.connection.on('error', (error) => {
+    console.error('MongoDB connection error:', error);
+});
+
+process.on('SIGINT', () => {
+    mongoose.connection.close(() => {
+        console.log('MongoDB connection closed due to app termination');
+        process.exit(0);
+    });
+});
 
 module.exports = Provider
 
